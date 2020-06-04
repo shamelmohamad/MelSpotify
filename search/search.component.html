@@ -1,0 +1,36 @@
+
+<div 
+class="card text-white bg-primary mb-3"  id="navbarColor02"
+style="max-width: 60rem;margin: auto;"
+>
+
+  <div class="card-header" id="navbarColor02"><h1 class="title">Need Music?</h1></div>
+  <div style="text-align:center;" class="card-body">
+    <p class="need">Use MySpotify to find your favourite music now!</p>
+    <form>
+      <div class="form-group" id="navbarColor02"></div>
+      <input 
+        class="w3-input w3-border w3-round-xxlarge purple-font"
+        color="black"
+        type="text"
+        [(ngModel)]="searchStr"
+        placeholder="Artist Name"
+        (keyup)="searchTerm$.next()"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
+      &nbsp; &nbsp; &nbsp;
+         <button  type="submit" (click)="searchMusic()" name="submit" value="submit" >
+         Search
+          </button> 
+ 
+    </form>
+    <div *ngFor="let item of resultItems">
+      <app-result-box
+        [musicData]="item"
+        (viewMusicDetails)="listenForDetails($event)"
+      ></app-result-box>
+    </div>
+  </div>
+  
+</div>
